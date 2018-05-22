@@ -88,3 +88,8 @@ def find_passenger(request):
 
     title = 'Find Passenger'
     return render(request, 'passenger/find_passenger.html', {"title": title, "passengers": passengers})
+
+
+def driver_profile(request, passenger_id):
+    user = User.objects.get(id=passenger_id)
+    passenger_profile = PassengerProfile.objects.filter(user=user)
