@@ -33,3 +33,9 @@ class DriverProfile(models.Model):
     def save_user_profile(sender, instance, **kwargs):
         instance.driverprofile.save()
     # end of link
+
+
+class CarPool(models.Model):
+    name = models.CharField(max_length=50, blank=True)
+    destination = models.CharField(max_length=100, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
