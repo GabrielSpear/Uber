@@ -20,3 +20,9 @@ class DriverReviewForm(forms.ModelForm):
     class Meta:
         model = Reviews
         fields = ('review',)
+
+
+class LocationForm(forms.ModelForm):
+    class Meta:
+        model = Location
+        fields = ['current', 'destination']
