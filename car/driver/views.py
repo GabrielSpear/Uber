@@ -93,3 +93,6 @@ def find_passenger(request):
 def driver_profile(request, passenger_id):
     user = User.objects.get(id=passenger_id)
     passenger_profile = PassengerProfile.objects.filter(user=user)
+
+    title = 'Passenger Profile'
+    return render(request, 'driver/passenger_profile.html', {"title": title, "profile": passenger_profile})
