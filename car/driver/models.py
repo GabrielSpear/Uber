@@ -46,3 +46,14 @@ class Location(models.Model):
         User, on_delete=models.CASCADE, related_name='driver_location')
     current = models.CharField(max_length=100, blank=True)
     destination = models.CharField(max_length=100, blank=True)
+
+    # link to in-built user model
+    @receiver(post_save, sender=User)
+    def create_user_location(sender, instance, created, **kwargs):
+        if created:
+            Location.objects.create(user=instance)
+
+    @receiver(post_save, sender=User)
+    def save_user_location(sender, instance, **kwargs):
+        instance.driver_location.save()
+    # end of link
