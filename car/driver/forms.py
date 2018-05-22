@@ -7,3 +7,10 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email']
+
+
+class DriverProfileForm(forms.ModelForm):
+    class Meta:
+        model = DriverProfile
+        fields = ['profile_pic', 'gender',
+                  'car_capacity', 'plates', 'car_color']
