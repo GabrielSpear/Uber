@@ -23,3 +23,6 @@ def home(request, username):
             messages.error(request, ('This car is full, try another driver.'))
     else:
         carpool_form = CarPoolForm()
+
+    title = 'Driver'
+    return render(request, 'driver/home.html', {'title': title, "user": user, "carpool": carpool, "form": carpool_form})
