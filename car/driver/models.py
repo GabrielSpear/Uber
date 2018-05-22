@@ -18,3 +18,18 @@ class DriverProfile(models.Model):
     car_capacity = models.IntegerField(null=True)
     plates = models.CharField(max_length=30, null=True)
     car_color = models.CharField(max_length=30, null=True)
+
+    def getPic(self):
+        if not self.profile_pic:
+            return '/media/profile/driver/user.svg'
+
+    # link to in-built user model
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            DriverProfile.objects.create(user=instance)
+
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.driverprofile.save()
+    # end of link
