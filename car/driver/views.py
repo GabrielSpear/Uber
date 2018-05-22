@@ -81,3 +81,10 @@ def update_location(request, username):
 
     title = 'Update Location'
     return render(request, 'driver/update_location.html', {"title": title, "form": location_form})
+
+
+def find_passenger(request):
+    passengers = PassengerProfile.objects.all()
+
+    title = 'Find Passenger'
+    return render(request, 'passenger/find_passenger.html', {"title": title, "passengers": passengers})
