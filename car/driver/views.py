@@ -78,3 +78,6 @@ def update_location(request, username):
             messages.error(request, ('Please correct the error.'))
     else:
         location_form = LocationForm(instance=request.user.driver_location)
+
+    title = 'Update Location'
+    return render(request, 'driver/update_location.html', {"title": title, "form": location_form})
