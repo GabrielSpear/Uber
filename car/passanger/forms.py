@@ -14,3 +14,9 @@ class PassengerProfileForm(forms.ModelForm):
     class Meta:
         model = PassengerProfile
         fields = ['profile_pic', 'gender', 'age']
+
+
+class DriverReviewForm(forms.ModelForm):
+    class Meta:
+        model = Reviews
+        fields = ('review',)
