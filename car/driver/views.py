@@ -61,3 +61,20 @@ def update_profile(request, username):
         user_form = UserForm(instance=request.user)
         profile_form = DriverProfileForm(instance=request.user.driverprofile)
     return render(request, 'driver/update_profile.html', {"user_form": user_form, "profile_form": profile_form})
+
+
+def update_location(request, username):
+    user = User.objects.get(username=username)
+
+    if request.method == 'POST':
+        location_form = LocationForm(
+            request.POST, instance=request.user.driver_location)
+        print(location_form)
+        if location_form.is_valid():
+            location_form.save()
+            messages.success(request, ('You have updated your location.'))
+            return HttpResponseRedirect("/driver/profile/%s" % user.username)
+        else:
+            messages.error(request, ('Please correct the error.'))
+    else:
+        location_form = LocationForm(instance=request.user.driver_location)
