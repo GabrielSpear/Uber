@@ -43,3 +43,6 @@ def update_profile(request, username):
         user_form = UserForm(instance=request.user)
         profile_form = PassengerProfileForm(
             instance=request.user.passengerprofile)
+
+    title = 'Update Profile'
+    return render(request, 'passenger/update_profile.html', {"title": title, "user_form": user_form, "profile_form": profile_form})
