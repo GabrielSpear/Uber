@@ -53,3 +53,8 @@ def find_driver(request):
 
     title = 'Find Driver'
     return render(request, 'passenger/find_driver.html', {"title": title, "drivers": drivers})
+
+
+def driver_profile(request, driver_id):
+    user = User.objects.get(id=driver_id)
+    driver_profile = DriverProfile.objects.filter(user=user)
